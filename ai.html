@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" href="img/logo.png" type="image/x-icon">
+  <title>هوش مصنوعی</title>
+  <link rel="stylesheet" href="ai.css" />
+</head>
+<body>
+  <header>
+    <h1>هوش مصنوعی چمران سیستم</h1>
+  </header>
+
+  <main>
+    <section id="diagnostic">
+        <h2>🧠 تشخیص مشکل سخت‌افزاری</h2>
+        <p>مشکل سیستم خود را بنویس (مثلاً: "کامپیوتر روشن میشه ولی تصویر نمیاد"):</p>
+        <input type="text" id="problemInput" placeholder="مشکل سیستم..." />
+        <button onclick="analyzeProblem()">تحلیل کن</button>
+        <div id="diagnosticResult"></div>
+      </section>
+      
+      <hr>
+      
+      <section id="compatibility">
+        <h2>🔄 پیشنهاد قطعات سازگار</h2>
+        <p>نام یک قطعه بنویس (مثلاً: "Core i5 12400"):</p>
+        <input type="text" id="matchInput" placeholder="نام قطعه..." />
+        <button onclick="matchParts()">نمایش قطعات سازگار</button>
+        <div id="matchResult"></div>
+        <p></p>
+      </section>
+      
+     
+  </main>
+
+  <footer class="bottom-footer">
+    <nav>
+      <a href="index.html">
+        <div class="nav-item">
+          <i class="fas fa-home"></i>
+          <span>خانه</span>
+        </div>
+      </a>
+      <a href="sab.html">
+        <div class="nav-item">
+          <i class="fas fa-shopping-cart"></i>
+          <span>سبد خرید</span>
+        </div>
+      </a>
+      <a href="ai.html" class="green-nav">
+        <div class="nav-item">
+          <i class="fas fa-robot"></i>
+          <span>AI</span>
+        </div>
+      </a>
+    </nav>
+  </footer>
+
+  <script src="ai.js"></script>
+</body>
+</html>

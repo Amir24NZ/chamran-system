@@ -283,7 +283,7 @@
   
   @media (max-width: 768px) {
     header {
-      padding-top: 40px; /* یا margin-top: 20px مثلا */
+      padding-top: 100px; /* یا margin-top: 20px مثلا */
     }
   }
   
@@ -387,4 +387,10 @@
     font-size: 0.95rem;
   }
   
+
+  @media (max-width: 600px) {
+    .search-bar {
+      margin-top: -65px;
+    }
+  }
   

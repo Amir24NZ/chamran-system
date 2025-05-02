@@ -35,16 +35,16 @@
    
   .support-left {
     position: absolute;
-    right: 20px;
-    top: 15px;
+    top: 60px;
+    right: 15px;
     font-size: 28px;
-    color: white; /* رنگ دلخواه */
+    color: var(--white);
     cursor: pointer;
   }
   
   .logo {
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     object-fit: contain;
     position: absolute;
     left: 20px;
@@ -53,8 +53,8 @@
 
   .hamburger-menu {
     position: absolute;
-    top: 60px;
-    right: 22px;
+    right: 20px;
+    top: 15px;
     z-index: 1000;
     color: black
   }
@@ -70,7 +70,7 @@
     position: absolute;
     top: 40px;
     right: 0;
-    background-color: white;
+    background-color: var(--white);
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 10px;
@@ -84,12 +84,12 @@
   }
   
   .menu-content li {
-    padding: 12px 16px; /* افزایش فاصله داخلی */
+    padding: 12px 16px; 
     cursor: pointer;
-    font-size: 15px; /* کمی درشت‌تر */
+    font-size: 15px; 
     border-bottom: 1px solid #eee;
-    letter-spacing: 0.5px; /* کشیده‌تر شدن متن */
-    text-align: right; /* برای متن فارسی مناسب‌تر */
+    letter-spacing: 0.5px; 
+    text-align: right; 
   }
  
   .submenu {
@@ -283,7 +283,7 @@
   
   @media (max-width: 768px) {
     header {
-      padding-top: 100px; /* یا margin-top: 20px مثلا */
+      padding-top: 90px; 
     }
   }
   
@@ -334,7 +334,7 @@
   .product-card {
     flex: 0 0 auto;
     width: 180px;
-    background-color: #ffffff;
+    background-color: var(--white);
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 10px;
@@ -366,8 +366,8 @@
   }
   
   .product-card button {
-    background-color: #006A71;
-    color: white;
+    background-color: var(--header-footer);
+    color: var(--white);
     border: none;
     padding: 6px 10px;
     border-radius: 6px;
@@ -390,7 +390,7 @@
 
   @media (max-width: 600px) {
     .search-bar {
-      margin-top: -65px;
+      margin-top: -75px;
     }
   }
   

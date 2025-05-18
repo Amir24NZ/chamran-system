@@ -24,44 +24,9 @@ body {
     color: white;
     
   }
-  
-  section {
-    background-color: #9acbd0;
-    padding: 15px;
-    margin: 20px auto; /* فاصله از بالا و پایین 20px و مرکز شدن افقی */
-    border-radius: 8px;
-    max-width: 1200px; /* یا هر عرضی که دوست داری */
-    width: 90%; /* برای ریسپانسیو بودن */
-  }
-  
-  #compatibility {
-    margin-bottom: 100px; /* یا هر مقدار دلخواه */
-  }
-  
-  
-  button {
-    background-color: var(--button-color);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 8px;
-  }
-  
-  button:hover {
-    background-color: #004e55;
-  }
-  
-  #diagnosticResult, #matchResult {
-    margin-top: 15px;
-    background-color: white;
-    color: black;
-    padding: 10px;
-    border-radius: 8px;
-  }
 
-  footer {
+  
+footer {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;    
     background-color: var(--header-footer);

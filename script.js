@@ -61,3 +61,39 @@ function filterProducts(category) {
     menu.style.display = "none";
   }
 }
+
+const slider = document.getElementById("slider");
+let index = 0;
+
+function autoSlide() {
+  index = (index + 1) % slider.children.length;
+  slider.scrollTo({
+    left: slider.clientWidth * index,
+    behavior: "smooth"
+  });
+}
+
+setInterval(autoSlide, 3000);
+
+document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.getElementById("searchInput");
+  const searchBtn = document.getElementById("searchBtn");
+  const productsSection = document.getElementById("productsSection");
+
+  function handleSearchScroll() {
+    searchProducts(); // فیلتر محصولات
+    if (productsSection) {
+      productsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+
+  searchInput.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      handleSearchScroll();
+    }
+  });
+
+  searchBtn.addEventListener("click", function () {
+    handleSearchScroll();
+  });
+});

@@ -13,8 +13,15 @@ body {
   direction: rtl;
   }
   
-  h1 {
-    color: #006a71;
+  header {
+    text-align: center;
+    background-color: var(--header-footer);
+    padding: 10px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    margin-bottom: 20px;
+    color: white;
+    
   }
   
   #cartItems {
@@ -34,6 +41,9 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
   
+  #cartItems {
+    margin-bottom: 100px; /* یا هر مقدار دلخواه */
+  }
   .cart-item img {
     width: 100px;
     height: auto;

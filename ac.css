@@ -25,6 +25,48 @@ body {
     
   }
 
+  #form-container {
+  background-color: var(--bg-main);
+  padding: 25px;
+  border-radius: 15px;
+  max-width: 350px;
+  margin: auto;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  direction: rtl;
+  text-align: right;
+}
+
+#form-container h2 {
+  color: var(--header-footer);
+  margin-bottom: 15px;
+}
+
+#form-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+#form-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#form-container p a {
+  color: var(--header-footer);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
   
 footer {
     border-top-left-radius: 8px;

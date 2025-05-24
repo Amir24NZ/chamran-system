@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ورود / ثبت‌نام</title>
-  <link rel="stylesheet" href="ac.css?v=2.2">
+  <link rel="stylesheet" href="ac.css?v=2.3">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -13,7 +13,26 @@
     <h1>حساب کاربری</h1>
   </header>
 
-  
+  <main style="padding: 1rem;">
+  <div id="form-container">
+    <div id="register-form">
+      <h2>ثبت‌نام</h2>
+      <input type="text" id="reg-username" placeholder="نام کاربری">
+      <input type="password" id="reg-password" placeholder="رمز عبور">
+      <button onclick="register()">ثبت‌نام</button>
+      <p style="margin-top: 10px;">قبلاً حساب ساختی؟ <a href="#" onclick="switchToLogin()">ورود</a></p>
+    </div>
+
+    <div id="login-form" style="display: none;">
+      <h2>ورود</h2>
+      <input type="text" id="login-username" placeholder="نام کاربری">
+      <input type="password" id="login-password" placeholder="رمز عبور">
+      <button onclick="login()">ورود</button>
+      <p style="margin-top: 10px;">حساب نداری؟ <a href="#" onclick="switchToRegister()">ثبت‌نام</a></p>
+    </div>
+  </div>
+</main>
+
 <footer class="bottom-footer">
   <nav>
     <a href="index.html">
@@ -49,6 +68,6 @@
   </nav>
 </footer>
 
- <script defer src="ac.js?v=2.2"></script>
+ <script defer src="ac.js?v=2.3"></script>
 </body>
 </html>

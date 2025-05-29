@@ -62,19 +62,6 @@ function filterProducts(category) {
   }
 }
 
-const slider = document.getElementById("slider");
-let index = 0;
-
-function autoSlide() {
-  index = (index + 1) % slider.children.length;
-  slider.scrollTo({
-    left: slider.clientWidth * index,
-    behavior: "smooth"
-  });
-}
-
-setInterval(autoSlide, 3000);
-
 document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("searchInput");
   const searchBtn = document.getElementById("searchBtn");
@@ -97,3 +84,56 @@ document.addEventListener("DOMContentLoaded", function () {
     handleSearchScroll();
   });
 });
+
+const slides = document.querySelectorAll(".slide");
+let currentSlide = 0;
+let startX = 0;
+let endX = 0;
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.remove("active");
+    if (i === index) slide.classList.add("active");
+  });
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide(currentSlide);
+}
+
+// دکمه‌ها
+document.querySelector(".next").addEventListener("click", nextSlide);
+document.querySelector(".prev").addEventListener("click", prevSlide);
+
+// سوایپ موبایل
+const slider = document.getElementById("slider");
+
+slider.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+
+slider.addEventListener("touchend", (e) => {
+  endX = e.changedTouches[0].clientX;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  if (startX - endX > 50) {
+    nextSlide();
+  } else if (endX - startX > 50) {
+    prevSlide();
+  }
+}
+
+// اسلاید خودکار هر ۵ ثانیه
+setInterval(nextSlide, 7000);
+
+// نمایش اولین اسلاید
+showSlide(currentSlide);
+

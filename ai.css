@@ -26,13 +26,15 @@ body {
   }
   
   section {
-    background-color: #9acbd0;
-    padding: 15px;
-    margin: 20px auto; /* فاصله از بالا و پایین 20px و مرکز شدن افقی */
-    border-radius: 8px;
-    max-width: 1200px; /* یا هر عرضی که دوست داری */
-    width: 90%; /* برای ریسپانسیو بودن */
-  }
+  background-color: #9acbd0;
+  padding: 20px;
+  margin: 20px;
+  margin-bottom: 60px;
+  border-radius: 8px;
+  color: black;
+  text-align: center;
+}
+
   
   #compatibility {
     margin-bottom: 100px; /* یا هر مقدار دلخواه */
@@ -43,11 +45,22 @@ body {
     background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 8px 16px;
     margin-top: 10px;
     cursor: pointer;
-    border-radius: 8px;
-  }
+    font-size: 20px;
+    width: 45px;      /* عرض ثابت */
+    height: 45px;     /* ارتفاع مساوی عرض */
+    border-radius: 100%; /* گرد شدن کامل به شکل دایره */
+}
+
+#problemInput {
+  border-radius: 8px; /* مقدار دلخواه برای گرد شدن گوشه‌ها */
+  padding: 8px 12px;   /* بهتره یه padding هم بدی برای ظاهر بهتر */
+  border: 1px solid #ccc; /* حاشیه معمولی */
+  outline: none; /* وقتی کلیک می‌کنه دورش خط اضافی نیفته */
+  font-size: 16px;
+}
+
   
   button:hover {
     background-color: #004e55;

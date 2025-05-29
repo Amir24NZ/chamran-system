@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="icon" href="img/logo.png" type="image/x-icon">
   <title>هوش مصنوعی</title>
-  <link rel="stylesheet" href="ai.css?v=2.2">
+  <link rel="stylesheet" href="ai.css?v=2.3">
 </head>
 <body>
   <header>
@@ -15,24 +15,12 @@
 
   <main>
     <section id="diagnostic">
-        <h2>🧠 تشخیص مشکل سخت‌افزاری</h2>
-        <p>مشکل سیستم خود را بنویس (مثلاً: "کامپیوتر روشن میشه ولی تصویر نمیاد"):</p>
-        <input type="text" id="problemInput" placeholder="مشکل سیستم..." />
-        <button onclick="analyzeProblem()">تحلیل کن</button>
+        <h2>فقط بپرس! <i class="fas fa-robot"></i></h2>
+        <p>هرچه دل تنگت میخواهد بپرس!</p>
+        <input type="text" id="problemInput" placeholder="سوال من اینه..." />
+        <button onclick="analyzeProblem()"><i class="fas fa-paper-plane"></i></button>
         <div id="diagnosticResult"></div>
       </section>
-      
-   
-      
-      <section id="compatibility">
-        <h2>🔄 پیشنهاد قطعات سازگار</h2>
-        <p>نام یک قطعه بنویس (مثلاً: "Core i5 12400"):</p>
-        <input type="text" id="matchInput" placeholder="نام قطعه..." />
-        <button onclick="matchParts()">نمایش قطعات سازگار</button>
-        <div id="matchResult"></div>
-        <p></p>
-      </section>
-      
      
   </main>
 
@@ -71,6 +59,6 @@
   </nav>
 </footer>
 
-  <script src="ai.js?v=2.2"></script>
+  <script src="ai.js?v=2.3"></script>
 </body>
 </html>

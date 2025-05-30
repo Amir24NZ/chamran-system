@@ -212,3 +212,8 @@ body {
   margin-top: 20px;
     
 }
+
+#account-info-container button:hover {
+  background-color: var(--header-footer); /* رنگ مورد نظرت برای هاور */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

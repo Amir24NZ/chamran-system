@@ -1,7 +1,8 @@
 :root {
   --bg-main: #F2EFE7;
   --bg-secondary: #9ACBD0;
-  --button-color: #48A6A7;
+  --button-color: #006A71 ;
+  --button-hover: #00555B;
   --header-footer: #006A71;
   --white: #ffffff;
 }
@@ -65,7 +66,7 @@ body {
 
   
   button:hover {
-    background-color: #004e55;
+    background-color: var(--button-hover);
   }
   
   #diagnosticResult, #matchResult {
@@ -105,7 +106,7 @@ body {
   }
   
   .bottom-footer nav a:hover {
-    color: var(--button-color);
+    color: var(--bg-secondary);
   }
   
   /* فاصله پایین صفحه اصلی برای دیده شدن محتوا زیر فوتر */

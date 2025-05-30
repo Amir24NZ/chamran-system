@@ -1,7 +1,8 @@
 :root {
   --bg-main: #F2EFE7;
   --bg-secondary: #9ACBD0;
-  --button-color: #48A6A7;
+  --button-color: #006A71 ;
+  --button-hover: #00555B;
   --header-footer: #006A71;
   --white: #ffffff;
 }
@@ -62,8 +63,12 @@ body {
   font-weight: bold;
 }
 
+#form-container button:hover {
+  background-color: var(--button-hover); /* استفاده از متغیر تعریف شده */
+}
+
 #form-container p a {
-  color: var(--header-footer);
+  color: var(--button-color);
   text-decoration: underline;
   cursor: pointer;
 }
@@ -98,7 +103,7 @@ footer {
   }
 
   .bottom-footer nav a:hover {
-    color: var(--button-color);
+    color: var(--bg-secondary);
   }
 
   /* فاصله پایین صفحه اصلی برای دیده شدن محتوا زیر فوتر */
@@ -214,6 +219,6 @@ body {
 }
 
 #account-info-container button:hover {
-  background-color: var(--header-footer); /* رنگ مورد نظرت برای هاور */
+  background-color: var(--button-hover); /* رنگ مورد نظرت برای هاور */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

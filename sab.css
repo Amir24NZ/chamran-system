@@ -1,10 +1,12 @@
 :root {
   --bg-main: #F2EFE7;
   --bg-secondary: #9ACBD0;
-  --button-color: #48A6A7;
+  --button-color: #006A71 ;
+  --button-hover: #00555B;
   --header-footer: #006A71;
   --white: #ffffff;
 }
+  
 
 body {
   margin: 0;
@@ -63,16 +65,17 @@ body {
 
   .remove-btn {
     margin-top: 10px;
-    background-color: #006a71;
+    background-color: var(--button-color);
     color: white;
     border: none;
     padding: 6px 12px;
     border-radius: 5px;
     cursor: pointer;
+    direction: ltr;
   }
   
   .remove-btn:hover {
-    background-color: #004d52;
+    background-color: var(--button-hover);
   }
   
   footer {
@@ -104,7 +107,7 @@ body {
   }
   
   .bottom-footer nav a:hover {
-    color: var(--button-color);
+    color: var(--bg-secondary);
   }
   
   /* فاصله پایین صفحه اصلی برای دیده شدن محتوا زیر فوتر */

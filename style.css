@@ -1,10 +1,11 @@
 :root {
-    --bg-main: #F2EFE7;
-    --bg-secondary: #9ACBD0;
-    --button-color: #48A6A7;
-    --header-footer: #006A71;
-    --white: #ffffff;
-  }
+  --bg-main: #F2EFE7;
+  --bg-secondary: #9ACBD0;
+  --button-color: #006A71 ;
+  --button-hover: #00555B;
+  --header-footer: #006A71;
+  --white: #ffffff;
+}
   
   body {
     margin: 0;
@@ -197,7 +198,7 @@
   }
   
   .product button {
-    background-color: #006A71;
+    background-color: var(--button-color);
     color: white;
     border: none;
     padding: 6px 10px;
@@ -208,7 +209,7 @@
   }
   
   .product button:hover {
-    background-color: #004f54;
+    background-color: var(--button-hover);
   }
   
   
@@ -241,7 +242,7 @@
   }
   
   .bottom-footer nav a:hover {
-    color: var(--button-color);
+    color: var(--bg-secondary);
   }
   
   /* فاصله پایین صفحه اصلی برای دیده شدن محتوا زیر فوتر */
@@ -379,7 +380,7 @@
   }
   
   .product-card button {
-    background-color: var(--header-footer);
+    background-color: var(--button-color);
     color: var(--white);
     border: none;
     padding: 6px 10px;
@@ -391,7 +392,7 @@
   }
   
   .product-card button:hover {
-    background-color: #004f54;
+    background-color: var(--button-hover);
   }
   
   .product-card span {

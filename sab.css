@@ -27,12 +27,21 @@ body {
   #cartItems {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
+    max-width: 600px;
+    margin: 20px auto 85px auto;
   }
+
+  @media (max-width: 600px) {
+  #cartItems {
+    margin: 20px;  /* همه طرف‌ها 20 پیکسل */
+    margin-bottom: 85px;
+  }
+}
   
   .cart-item {
-    border: 1px solid #48a6a7;
-    border-radius: 10px;
+    border: 1px solid var(--header-footer);
+    border-radius: 8px;
     background-color: white;
     display: flex;
     align-items: center;
@@ -40,10 +49,7 @@ body {
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
-  
-  #cartItems {
-    margin-bottom: 100px; /* یا هر مقدار دلخواه */
-  }
+
   .cart-item img {
     width: 100px;
     height: auto;

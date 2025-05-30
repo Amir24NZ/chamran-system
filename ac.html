@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ورود / ثبت‌نام</title>
-  <link rel="stylesheet" href="ac.css?v=2.4">
+  <title>حساب کاربری</title>
+  <link rel="stylesheet" href="a.css?v=2.4">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="img/logo.png" type="image/x-icon">
 </head>
 
 <body>
 <header>
-    <h1>حساب کاربری</h1>
+    <h1>حساب کاربری <i class="fas fa-user"></i></h1>
   </header>
 
   <main style="padding: 1rem;">
@@ -30,6 +31,25 @@
       <button onclick="login()">ورود</button>
       <p style="margin-top: 10px;">حساب نداری؟ <a href="#" onclick="switchToRegister()">ثبت‌نام</a></p>
     </div>
+  </div>
+
+  <div class="container" id="account-info-container" style="display: none;">
+    <div class="form-section hidden" id="formSection">
+      <label>نام: <input type="text" id="firstName" /></label><br/><br/>
+      <label>نام خانوادگی: <input type="text" id="lastName" /></label><br/><br/>
+      <label>شهر: <input type="text" id="city" /></label><br/><br/>
+      <label>شماره تلفن: <input type="text" id="phone" /></label><br/><br/>
+      <button onclick="submitInfo()">ثبت اطلاعات</button>
+    </div>
+
+    <div class="info-section hidden" id="infoDisplay">
+      <h2>اطلاعات ثبت‌شده:</h2>
+      <p id="nameInfo"></p>
+      <p id="cityInfo"></p>
+      <p id="phoneInfo"></p>
+      <button onclick="editInfo()">ویرایش اطلاعات</button>
+    </div>
+    <button onclick="logout()">خروج از حساب</button>
   </div>
 </main>
 
@@ -59,7 +79,7 @@
         <span>پشتیبانی</span>
       </div>
     </a>
-    <a href="ac.html">
+    <a href="a.html">
       <div class="nav-item">
         <i class="fas fa-user"></i>
         <span>حساب</span>
@@ -68,6 +88,6 @@
   </nav>
 </footer>
 
- <script defer src="ac.js?v=2.4"></script>
+ <script defer src="a.js?v=2.4"></script>
 </body>
 </html>

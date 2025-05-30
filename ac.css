@@ -13,7 +13,7 @@ body {
     direction: rtl;
 }
 
-  
+
   header {
     text-align: center;
     background-color: var(--header-footer);
@@ -22,14 +22,15 @@ body {
     border-bottom-right-radius: 8px;
     margin-bottom: 20px;
     color: white;
-    
+    font-size: 14px;
+
   }
 
   #form-container {
   background-color: var(--bg-secondary);
-  padding: 25px;
-  border-radius: 15px;
-  max-width: 350px;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
   margin: auto;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
   direction: rtl;
@@ -67,16 +68,16 @@ body {
   cursor: pointer;
 }
 
-  
+
 footer {
     border-top-left-radius: 8px;
-    border-top-right-radius: 8px;    
+    border-top-right-radius: 8px;
     background-color: var(--header-footer);
     color: var(--white);
     text-align: center;
     padding: 1rem;
   }
-  
+
   .bottom-footer {
     position: fixed;
     bottom: 0;
@@ -88,20 +89,20 @@ footer {
     padding: 0.7rem 0;
     z-index: 1000;
   }
-  
+
   .bottom-footer nav a {
     color: var(--white);
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
   }
-  
+
   .bottom-footer nav a:hover {
     color: var(--button-color);
   }
-  
+
   /* فاصله پایین صفحه اصلی برای دیده شدن محتوا زیر فوتر */
-  
+
   .bottom-footer {
     position: fixed;
     bottom: 0;
@@ -112,31 +113,102 @@ footer {
     justify-content: center;
     z-index: 1000;
   }
-  
+
   .bottom-footer nav {
     display: flex;
     gap: 40px;
   }
-  
+
   .bottom-footer a {
     text-decoration: none;
     color: #006A71;
   }
-  
+
   .nav-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 14px;
-    
+
   }
-  
+
   .nav-item i {
     font-size: 20px;
     margin-bottom: 5px;
   }
-  
+
   .green-nav .nav-item i,
   .green-nav .nav-item span {
     color: greenyellow
   }
+
+/* Styles from acnt.css */
+.container {
+  background-color: var(--white);
+  padding: 30px;
+  margin: 20px auto 85px auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #aaa;
+  text-align: center;
+  max-width: 600px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin: 20px;  /* همه طرف‌ها 20 پیکسل */
+    margin-bottom: 85px;
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+  text-align: right;
+}
+
+/* This input rule from acnt.css will override the previous one for inputs if not specific enough.
+   Let's make sure it applies to the new account info section. */
+.form-section input {
+  width: 100%; /* Ensure width for inputs in the form-section */
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+
+/* The button rule from acnt.css will be applied to all buttons.
+   Consider making it more specific if you need different button styles. */
+.form-section button {
+  background-color: var(--button-color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Ensure body padding for the fixed footer is applied */
+body {
+    padding-bottom: 60px;
+}
+
+
+/* در فایل ac.css */
+#account-info-container button {
+    
+    background-color: var(--button-color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+    
+}

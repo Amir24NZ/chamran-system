@@ -236,7 +236,7 @@ footer {
   text-align: center;
   max-width: 80px;
   padding: 10px 15px;
-  border-radius: 20px;
+  border-radius: 8px;
   background-color: var(--white);
   align-self: flex-start;
   margin-right: 20px;
@@ -246,7 +246,7 @@ footer {
   position: relative;
   width: 10px;
   height: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: #333;
   color: #333;
   animation: dot-typing 1.5s infinite ease-in-out;
@@ -260,7 +260,7 @@ footer {
   top: 0;
   width: 10px;
   height: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: #333;
   color: #333;
   animation: dot-typing 1.5s infinite ease-in-out;
@@ -319,4 +319,81 @@ footer {
   #messages-display {
     padding-bottom: 120px;
   }
+}
+
+/* Styles for Quick Questions */
+/* Styles for Quick Questions */
+.quick-questions-container {
+    display: flex; /* اضافه کنید */
+    flex-direction: column; /* برای چیدمان عمودی */
+    align-items: flex-end; /* برای تراز به راست */
+    gap: 5px; /* فاصله بین دکمه‌های اصلی */ /* این مقدار را تنظیم کنید */
+    margin-top: 10px; /* فاصله از پیام قبلی */
+    margin-bottom: 0; /* چسباندن به پیام */
+    width: 100%; /* اشغال عرض موجود */
+    max-width: 80%; /* هم اندازه با پیام‌های چت */
+    align-self: flex-end; /* هم تراز با پیام‌های ربات */
+    padding-left: 20px; /* برای هم تراز شدن با پیام‌های ربات */
+    padding-right: 0; /* اطمینان از حذف padding-right قبلی */
+    box-sizing: border-box;
+}
+
+.quick-question-btn {
+    background-color: var(--button-color);
+    color: var(--white);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    width: 100%;
+    min-height: 40px;
+    /* تغییرات در اینجا */
+    text-align: center; /* از right به center تغییر یافت*/
+    display: flex;
+    align-items: center;
+    justify-content: center; /* از flex-end به center تغییر یافت*/
+}
+
+.quick-question-btn:hover {
+    background-color: var(--button-hover);
+}
+
+.quick-questions-list {
+    display: flex;
+    flex-direction: column; /* برای اینکه دکمه‌ها زیر هم قرار بگیرند */
+    gap: 8px;
+    margin-top: 10px; /* کاهش فاصله */
+    margin-bottom: 0; /* چسباندن به پیام */
+    align-items: flex-end; /* برای تراز کردن دکمه‌ها به راست مانند پیام‌های ربات */
+    width: 100%;
+    max-width: 80%; /* هم اندازه با پیام‌های چت */
+    align-self: flex-end; /* هم اندازه با پیام‌های ربات */
+    padding-left: 20px; /* برای هم تراز شدن با پیام‌های ربات */
+    padding-right: 0; /* اطمینان از حذف padding-right قبلی */
+    box-sizing: border-box;
+}
+
+.quick-questions-list .question-item-btn {
+    background-color: var(--white);
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+    min-height: 40px;
+    /* تغییرات در اینجا */
+    text-align: center; /* از right به center تغییر یافت*/
+    display: flex;
+    align-items: center;
+    justify-content: center; /* از flex-end به center تغییر یافت*/
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.quick-questions-list .question-item-btn:hover {
+    background-color: #e0e0e0;
+    border-color: #999;
 }

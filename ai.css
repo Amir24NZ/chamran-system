@@ -1,7 +1,7 @@
 :root {
   --bg-main: #F2EFE7;
   --bg-secondary: #9ACBD0;
-  --button-color: #006A71 ;
+  --button-color: #006A71;
   --button-hover: #00555B;
   --header-footer: #006A71;
   --white: #ffffff;
@@ -9,143 +9,291 @@
 
 body {
   margin: 0;
-    font-family: sans-serif;
-    background-color: var(--bg-main);
-    direction: rtl;
+  font-family: sans-serif;
+  background-color: var(--bg-main);
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Add padding-bottom to the body to prevent content from being hidden behind the fixed footer */
+  padding-bottom: 120px; /* این مقدار باید با ارتفاع تقریبی نوار ورودی + فوتر منطبق باشد */
 }
 
-  header {
-    text-align: center;
-    background-color: var(--header-footer);
-    padding: 10px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    margin-bottom: 20px;
-    font-size: 14px;
-    color: white;
-    
-  }
-  
-  section {
-  background-color: var(--bg-secondary);
-  padding: 20px;
-  margin: 20px auto 85px auto;
-  border-radius: 8px;
-  color: black;
+header {
   text-align: center;
-  max-width: 600px;
-  
+  background-color: var(--header-footer);
+  padding: 10px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin-bottom: 0;
+  font-size: 14px;
+  color: white;
+  flex-shrink: 0;
 }
 
-@media (max-width: 600px) {
-  section {
-    margin: 20px;  /* همه طرف‌ها 20 پیکسل */
-    margin-bottom: 85px;
-  }
+/* Chat-specific styles */
+#chat-container {
+  background-color: var(--bg-main);
+  padding: 0 10px;
+  margin: 0 auto;
+  flex-grow: 1;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
 }
-  
-  button {
-    background-color: var(--button-color);
-    color: white;
-    border: none;
-    margin-top: 10px;
-    cursor: pointer;
-    font-size: 20px;
-    width: 45px;      /* عرض ثابت */
-    height: 45px;     /* ارتفاع مساوی عرض */
-    border-radius: 100%; /* گرد شدن کامل به شکل دایره */
+
+#messages-display {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  flex-grow: 1;
+  /* padding-bottom for messages-display is now controlled by body's padding-bottom */
+  box-sizing: border-box;
+}
+
+.chat-message {
+  max-width: 80%;
+  padding: 10px 15px;
+  border-radius: 20px; /* گردی کلی حباب‌ها */
+  line-height: 1.4;
+  word-wrap: break-word;
+  animation: fadeInSlideUp 0.3s ease-out forwards; /* انیمیشن ورود پیام */
+}
+
+.user-message {
+  background-color: var(--bg-secondary);
+  color: black;
+  align-self: flex-start; /* پیام‌های کاربر در سمت چپ قرار می‌گیرند */
+  border-bottom-left-radius: 20px; /* گوشه پایین چپ همانند گردی کلی */
+  border-bottom-right-radius: 5px; /* گوشه پایین راست را کمتر گرد می‌کنیم یا به حالت نوک تیز درمی‌آوریم */
+  margin-right: 20px; /* این باید margin-right باشد چون پیام در چپ است */
+}
+
+.bot-message {
+  background-color: var(--white);
+  color: black;
+  align-self: flex-end; /* پیام‌های هوش مصنوعی در سمت راست قرار می‌گیرند */
+  border-bottom-right-radius: 20px; /* گوشه پایین راست همانند گردی کلی */
+  border-bottom-left-radius: 5px; /* گوشه پایین چپ را کمتر گرد می‌کنیم یا به حالت نوک تیز درمی‌آوریم */
+  margin-left: 20px; /* این باید margin-left باشد چون پیام در راست است */
+}
+
+/* Input Area Styles */
+.chat-input-area {
+  position: fixed; /* Keep this fixed to stay above the footer */
+  bottom: 67px; /* Approximately footer height (10px padding * 2 sides + 0.7rem height) */
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: var(--bg-main);
+  padding-top: 10px;
+  z-index: 1001;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px 10px 10px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 #problemInput {
-  border-radius: 8px; /* مقدار دلخواه برای گرد شدن گوشه‌ها */
-  padding: 8px 12px;   /* بهتره یه padding هم بدی برای ظاهر بهتر */
-  border: 1px solid #ccc; /* حاشیه معمولی */
-  outline: none; /* وقتی کلیک می‌کنه دورش خط اضافی نیفته */
+  flex-grow: 1;
+  border-radius: 20px;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  outline: none;
   font-size: 16px;
 }
 
-  
-  button:hover {
-    background-color: var(--button-hover);
+button {
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+button:hover {
+  background-color: var(--button-hover);
+}
+
+/* --- FOOTER CODE (from your last provided exact copy) --- */
+footer {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: var(--header-footer);
+  color: var(--white);
+  text-align: center;
+  padding: 1rem;
+}
+
+.bottom-footer { /* First definition in your provided code */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--header-footer);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.7rem 0;
+  z-index: 1000;
+}
+
+.bottom-footer nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.bottom-footer nav a:hover {
+  color: var(--bg-secondary);
+}
+
+/* فاصله پایین صفحه اصلی برای دیده شدن محتوا زیر فوتر */
+
+.bottom-footer { /* Second definition in your provided code - this will take precedence */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--header-footer);
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.bottom-footer nav {
+  display: flex;
+  gap: 40px; /* این مقدار از آخرین کپی دقیق شماست */
+}
+
+.bottom-footer a {
+  text-decoration: none;
+  color: #006A71; /* این رنگ برای لینک‌های عمومی در فوتر اعمال خواهد شد */
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+}
+
+.nav-item i {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.green-nav .nav-item i,
+.green-nav .nav-item span {
+  color: greenyellow
+}
+/* --- END OF FOOTER CODE --- */
+
+
+/* Animation Keyframes */
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* شروع از کمی پایین‌تر */
   }
-  
-  #diagnosticResult, #matchResult {
-    margin-top: 15px;
-    background-color: white;
-    color: black;
-    padding: 10px;
-    border-radius: 8px;
+  to {
+    opacity: 1;
+    transform: translateY(0); /* پایان در موقعیت اصلی */
+  }
+}
+
+@keyframes dot-typing {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Loading Animation Styles */
+.loading-message {
+  text-align: center;
+  max-width: 80px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  background-color: var(--white);
+  align-self: flex-start;
+  margin-right: 20px;
+}
+
+.dot-typing {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #333;
+  color: #333;
+  animation: dot-typing 1.5s infinite ease-in-out;
+}
+
+.dot-typing::before,
+.dot-typing::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #333;
+  color: #333;
+  animation: dot-typing 1.5s infinite ease-in-out;
+}
+
+.dot-typing::before {
+  left: -15px;
+  animation-delay: 0.2s;
+}
+
+.dot-typing::after {
+  left: 15px;
+  animation-delay: 0.4s;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 600px) {
+  .user-message, .bot-message {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .input-wrapper {
+    padding: 0 10px 10px 10px;
+  }
+  /* No changes to .bottom-footer nav in media query to preserve exact copy */
+  .bottom-footer nav { /* از آخرین کپی شما */
+    gap: 20px; /* مقدار gap از فایل اصلی شما برای موبایل */
   }
 
-  footer {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;    
-    background-color: var(--header-footer);
-    color: var(--white);
-    text-align: center;
-    padding: 1rem;
+  /* This padding-bottom needs to be adjusted based on the combined height of fixed input area and footer */
+  #messages-display {
+    padding-bottom: 120px; /* نیاز به فضای بیشتری زیر پیام‌ها برای نمایش کامل */
   }
-  
-  .bottom-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: var(--header-footer);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0.7rem 0;
-    z-index: 1000;
-  }
-  
-  .bottom-footer nav a {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-  }
-  
-  .bottom-footer nav a:hover {
-    color: var(--bg-secondary);
-  }
-  
-  /* فاصله پایین صفحه اصلی برای دیده شدن محتوا زیر فوتر */
-  
-  .bottom-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: var(--header-footer);
-    padding: 10px 0;
-    display: flex;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-  .bottom-footer nav {
-    display: flex;
-    gap: 40px;
-  }
-  
-  .bottom-footer a {
-    text-decoration: none;
-    color: #006A71;
-  }
-  
-  .nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 14px;
-    
-  }
-  
-  .nav-item i {
-    font-size: 20px;
-    margin-bottom: 5px;
-  }
-  
-  .green-nav .nav-item i,
-  .green-nav .nav-item span {
-    color: greenyellow
-  }
+}

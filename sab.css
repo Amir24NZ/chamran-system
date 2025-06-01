@@ -150,3 +150,58 @@ body {
   .green-nav .nav-item span {
     color: greenyellow
   }
+
+  #checkout-section {
+  background-color: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 20px auto 85px auto; /* Adjust margin-bottom to ensure footer visibility */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  direction: rtl;
+  text-align: right;
+}
+
+ @media (max-width: 600px) {
+  #checkout-section {
+    margin: 20px;  /* همه طرف‌ها 20 پیکسل */
+    margin-bottom: 85px;
+  }
+}
+
+#checkout-section h2 {
+  color: var(--header-footer);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+#checkout-section p {
+  margin-bottom: 8px;
+  text-align: right;
+}
+
+#checkout-section button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+#checkout-section button:hover {
+  background-color: var(--button-hover);
+}
+
+#login-prompt a {
+  color: var(--button-color);
+  text-decoration: underline;
+}
+
+/* Ensure body padding for the fixed footer is applied */
+body {
+    padding-bottom: 60px;
+}

@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="icon" href="img/logo.png" type="image/x-icon">
   <title>سبد خرید</title>
-  <link rel="stylesheet" href="sab.css?v=2.6">
+  <link rel="stylesheet" href="sab.css?v=3.0">
 </head>
 
 <body>
@@ -14,6 +14,18 @@
     <h1>سبد خرید <i class="fas fa-shopping-cart"></i></h1>
   </header>
   <div id="cartItems"></div>
+
+  <div id="checkout-section">
+    <p id="login-prompt" style="text-align: center; margin-top: 20px; display: none;">برای ادامه خرید، لطفاً ابتدا <a href="ac.html">وارد حساب کاربری</a> خود شوید.</p>
+
+    <div id="user-info-checkout" style="display: none;">
+      <h2>اطلاعات شما:</h2>
+      <p id="checkout-name"></p>
+      <p id="checkout-city"></p>
+      <p id="checkout-phone"></p>
+      <button id="place-order-btn">ثبت سفارش نهایی</button>
+    </div>
+  </div>
 
   <footer class="bottom-footer">
   <nav>
@@ -50,6 +62,6 @@
   </nav>
 </footer>
 
-  <script src="sab.js?v=2.6"></script>
+  <script src="sab.js?v=3.0"></script>
 </body>
 </html>

@@ -29,6 +29,24 @@ function register() {
     return;
   }
 
+  // Username validation
+  if (username.length < 4) {
+    alert("نام کاربری حداقل باید 4 کاراکتر باشد.");
+    return;
+  }
+
+  // Password validation
+  if (password.length < 6) {
+    alert("رمز عبور حداقل باید 6 کاراکتر باشد.");
+    return;
+  }
+  const hasLetter = /[a-zA-Z]/.test(password);
+  const hasNumber = /\d/.test(password);
+  if (!hasLetter || !hasNumber) {
+    alert("رمز عبور باید شامل حروف (انگلیسی) و اعداد باشد.");
+    return;
+  }
+
   users[username] = { password: password };
   localStorage.setItem("users", JSON.stringify(users));
   alert("ثبت‌نام موفق بود! حالا وارد شو.");
@@ -53,14 +71,21 @@ function login() {
 function submitInfo() {
   const firstName = document.getElementById("firstName").value.trim();
   const lastName = document.getElementById("lastName").value.trim();
-  const city = document.getElementById("city").value.trim();
+  const address = document.getElementById("address").value.trim();
   const phone = document.getElementById("phone").value.trim();
 
-  if (firstName && lastName && city && phone) {
+  // Phone number validation
+  const phoneRegex = /^09\d{9}$/;
+  if (!phoneRegex.test(phone)) {
+    alert("شماره تلفن باید با '09' شروع شود و 11 رقم داشته باشد. مثال: 09123456789");
+    return;
+  }
+
+  if (firstName && lastName && address && phone) {
     const userInfo = {
       firstName,
       lastName,
-      city,
+      address,
       phone
     };
     const loggedInUser = localStorage.getItem("loggedInUser");
@@ -78,12 +103,16 @@ function submitInfo() {
 }
 
 function showInfo(user) {
+  const loggedInUser = localStorage.getItem("loggedInUser");
+  document.getElementById("usernameInfo").innerText = `نام کاربری: ${loggedInUser}`;
   document.getElementById("nameInfo").innerText = `نام: ${user.firstName} ${user.lastName}`;
-  document.getElementById("cityInfo").innerText = `شهر: ${user.city}`;
+  document.getElementById("addressInfo").innerText = `آدرس: ${user.address}`;
   document.getElementById("phoneInfo").innerText = `شماره تلفن: ${user.phone}`;
 
   document.getElementById("formSection").classList.add("hidden");
   document.getElementById("infoDisplay").classList.remove("hidden");
+  document.getElementById("ordersDisplay").classList.remove("hidden");
+  displayUserOrders();
 }
 
 function editInfo() {
@@ -94,17 +123,55 @@ function editInfo() {
   if (user) {
     document.getElementById("firstName").value = user.firstName;
     document.getElementById("lastName").value = user.lastName;
-    document.getElementById("city").value = user.city;
+    document.getElementById("address").value = user.address;
     document.getElementById("phone").value = user.phone;
   } else {
     document.getElementById("firstName").value = "";
     document.getElementById("lastName").value = "";
-    document.getElementById("city").value = "";
+    document.getElementById("address").value = "";
     document.getElementById("phone").value = "";
   }
   document.getElementById("infoDisplay").classList.add("hidden");
   document.getElementById("formSection").classList.remove("hidden");
+  document.getElementById("ordersDisplay").classList.add("hidden");
 }
+
+function displayUserOrders() {
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    const orderListDiv = document.getElementById("orderList");
+    orderListDiv.innerHTML = "";
+
+    if (loggedInUser) {
+        let userOrders = JSON.parse(localStorage.getItem("userOrders")) || {};
+        const orders = userOrders[loggedInUser] || [];
+
+        if (orders.length === 0) {
+            orderListDiv.innerHTML = "<p style='text-align: center;'>هیچ سفارشی ثبت نشده است.</p>";
+            return;
+        }
+
+        orders.forEach(order => {
+            const orderDiv = document.createElement("div");
+            orderDiv.className = "order-item";
+            orderDiv.innerHTML = `
+                <h3>سفارش شماره: ${order.orderId}</h3>
+                <p>تاریخ سفارش: ${order.orderDate}</p>
+                <p>گیرنده: ${order.userInfo.firstName} ${order.userInfo.lastName}</p>
+                <p>آدرس: ${order.userInfo.address}</p>
+                <p>تلفن: ${order.userInfo.phone}</p>
+                <h4>محصولات:</h4>
+                <ul>
+                    ${order.items.map(item => `<li>${item.title} - ${item.price} تومان</li>`).join("")}
+                </ul>
+                <hr>
+            `;
+            orderListDiv.appendChild(orderDiv);
+        });
+    } else {
+        orderListDiv.innerHTML = "<p style='text-align: center;'>برای مشاهده سفارشات، لطفاً وارد شوید.</p>";
+    }
+}
+
 
 function showAccountInfoOrForm() {
   const loggedInUser = localStorage.getItem("loggedInUser");
@@ -118,14 +185,16 @@ function showAccountInfoOrForm() {
 
     if (savedUserInfo) {
       showInfo(savedUserInfo);
+      displayUserOrders();
     } else {
       document.getElementById("formSection").classList.remove("hidden");
       document.getElementById("infoDisplay").classList.add("hidden");
+      document.getElementById("ordersDisplay").classList.add("hidden");
     }
   } else { // If no user is logged in
     document.getElementById("form-container").style.display = "block";
     document.getElementById("account-info-container").style.display = "none";
-    switchToRegister(); // Default to register form for new visitors
+    switchToRegister();
   }
 }
 
@@ -133,6 +202,41 @@ function logout() {
   localStorage.removeItem("loggedInUser");
   alert("شما با موفقیت خارج شدید.");
   showAccountInfoOrForm();
+}
+
+// New function to delete the user account
+function deleteAccount() {
+    const loggedInUser = localStorage.getItem("loggedInUser");
+
+    if (!loggedInUser) {
+        alert("شما وارد حساب کاربری نشده‌اید.");
+        return;
+    }
+
+    const confirmDelete = confirm("آیا از حذف حساب کاربری خود اطمینان دارید؟ تمام اطلاعات شما شامل اطلاعات شخصی و سفارشات حذف خواهد شد.");
+
+    if (confirmDelete) {
+        // Remove user from 'users' storage
+        let users = JSON.parse(localStorage.getItem("users")) || {};
+        delete users[loggedInUser];
+        localStorage.setItem("users", JSON.stringify(users));
+
+        // Remove user info from 'usersInfo' storage
+        let usersInfo = JSON.parse(localStorage.getItem("usersInfo")) || {};
+        delete usersInfo[loggedInUser];
+        localStorage.setItem("usersInfo", JSON.stringify(usersInfo));
+
+        // Remove user's orders from 'userOrders' storage
+        let userOrders = JSON.parse(localStorage.getItem("userOrders")) || {};
+        delete userOrders[loggedInUser];
+        localStorage.setItem("userOrders", JSON.stringify(userOrders));
+
+        // Clear the logged-in user session
+        localStorage.removeItem("loggedInUser");
+
+        alert("حساب کاربری شما با موفقیت حذف شد.");
+        showAccountInfoOrForm(); // Redirect to login/register form
+    }
 }
 
 window.onload = function () {

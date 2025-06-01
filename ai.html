@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="icon" href="img/logo.png" type="image/x-icon">
   <title>هوش مصنوعی</title>
-  <link rel="stylesheet" href="ai.css?v=2.6">
+  <link rel="stylesheet" href="ai.css?v=3.0">
 </head>
 <body>
   <header>
@@ -14,51 +14,53 @@
   </header>
 
   <main>
-    <section id="diagnostic">
-        <h2>فقط بپرس! <i class="fas fa-robot"></i></h2>
-        <p>هرچه دل تنگت میخواهد بپرس!</p>
-        <input type="text" id="problemInput" placeholder="سوال من اینه..." />
-        <button onclick="analyzeProblem()"><i class="fas fa-paper-plane"></i></button>
-        <div id="diagnosticResult"></div>
-      </section>
-     
+    <section id="chat-container">
+        <div id="messages-display">
+            </div>
+    </section>
   </main>
 
-  <footer class="bottom-footer">
-  <nav>
-    <a href="index.html">
-      <div class="nav-item">
-        <i class="fas fa-home"></i>
-        <span>خانه</span>
-      </div>
-    </a>
-    <a href="sab.html">
-      <div class="nav-item">
-        <i class="fas fa-shopping-cart"></i>
-        <span>سبد خرید</span>
-      </div>
-    </a>
-    <a href="ai.html" class="green-nav">
-      <div class="nav-item">
-        <i class="fas fa-robot"></i>
-        <span>AI</span>
-      </div>
-    </a>
-    <a href="https://t.me/+yYygk30uisU2MDA0" target="_blank">
-      <div class="nav-item">
-        <i class="fas fa-headset"></i>
-        <span>پشتیبانی</span>
-      </div>
-    </a>
-    <a href="ac.html">
-      <div class="nav-item">
-        <i class="fas fa-user"></i>
-        <span>حساب</span>
-      </div>
-    </a>
-  </nav>
-</footer>
+  <div class="chat-input-area">
+    <div class="input-wrapper">
+        <input type="text" id="problemInput" placeholder="سوال من اینه..." />
+        <button onclick="analyzeProblem()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+    <footer class="bottom-footer">
+        <nav>
+            <a href="index.html">
+                <div class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>خانه</span>
+                </div>
+            </a>
+            <a href="sab.html">
+                <div class="nav-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>سبد خرید</span>
+                </div>
+            </a>
+            <a href="ai.html" class="green-nav">
+                <div class="nav-item">
+                    <i class="fas fa-robot"></i>
+                    <span>AI</span>
+                </div>
+            </a>
+            <a href="https://t.me/+yYygk30uisU2MDA0" target="_blank">
+                <div class="nav-item">
+                    <i class="fas fa-headset"></i>
+                    <span>پشتیبانی</span>
+                </div>
+            </a>
+            <a href="ac.html">
+                <div class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>حساب</span>
+                </div>
+            </a>
+        </nav>
+    </footer>
+  </div>
 
-  <script src="ai.js?v=2.6"></script>
+  <script src="ai.js?v=3.0"></script>
 </body>
 </html>

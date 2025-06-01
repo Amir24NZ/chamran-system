@@ -15,7 +15,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  /* Add padding-bottom to the body to prevent content from being hidden behind the fixed footer */
   padding-bottom: 120px; /* این مقدار باید با ارتفاع تقریبی نوار ورودی + فوتر منطبق باشد */
 }
 
@@ -52,41 +51,40 @@ header {
   gap: 10px;
   overflow-y: auto;
   flex-grow: 1;
-  /* padding-bottom for messages-display is now controlled by body's padding-bottom */
   box-sizing: border-box;
 }
 
 .chat-message {
   max-width: 80%;
   padding: 10px 15px;
-  border-radius: 20px; /* گردی کلی حباب‌ها */
+  border-radius: 20px;
   line-height: 1.4;
   word-wrap: break-word;
-  animation: fadeInSlideUp 0.3s ease-out forwards; /* انیمیشن ورود پیام */
+  animation: fadeInSlideUp 0.3s ease-out forwards;
 }
 
 .user-message {
   background-color: var(--bg-secondary);
   color: black;
-  align-self: flex-start; /* پیام‌های کاربر در سمت چپ قرار می‌گیرند */
-  border-bottom-left-radius: 20px; /* گوشه پایین چپ همانند گردی کلی */
-  border-bottom-right-radius: 5px; /* گوشه پایین راست را کمتر گرد می‌کنیم یا به حالت نوک تیز درمی‌آوریم */
-  margin-right: 20px; /* این باید margin-right باشد چون پیام در چپ است */
+  align-self: flex-start;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 5px;
+  margin-right: 20px;
 }
 
 .bot-message {
   background-color: var(--white);
   color: black;
-  align-self: flex-end; /* پیام‌های هوش مصنوعی در سمت راست قرار می‌گیرند */
-  border-bottom-right-radius: 20px; /* گوشه پایین راست همانند گردی کلی */
-  border-bottom-left-radius: 5px; /* گوشه پایین چپ را کمتر گرد می‌کنیم یا به حالت نوک تیز درمی‌آوریم */
-  margin-left: 20px; /* این باید margin-left باشد چون پیام در راست است */
+  align-self: flex-end;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 5px;
+  margin-left: 20px;
 }
 
 /* Input Area Styles */
 .chat-input-area {
-  position: fixed; /* Keep this fixed to stay above the footer */
-  bottom: 67px; /* Approximately footer height (10px padding * 2 sides + 0.7rem height) */
+  position: fixed;
+  bottom: 67px;
   left: 0;
   right: 0;
   width: 100%;
@@ -134,7 +132,7 @@ button:hover {
   background-color: var(--button-hover);
 }
 
-/* --- FOOTER CODE (from your last provided exact copy) --- */
+/* --- FOOTER CODE (EXACTLY AS PROVIDED BY YOU) --- */
 footer {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -144,7 +142,7 @@ footer {
   padding: 1rem;
 }
 
-.bottom-footer { /* First definition in your provided code */
+.bottom-footer {
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -169,7 +167,7 @@ footer {
 
 /* فاصله پایین صفحه اصلی برای دیده شدن محتوا زیر فوتر */
 
-.bottom-footer { /* Second definition in your provided code - this will take precedence */
+.bottom-footer {
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -182,12 +180,12 @@ footer {
 
 .bottom-footer nav {
   display: flex;
-  gap: 40px; /* این مقدار از آخرین کپی دقیق شماست */
+  gap: 40px; /* این مقدار برای دسکتاپ است */
 }
 
 .bottom-footer a {
   text-decoration: none;
-  color: #006A71; /* این رنگ برای لینک‌های عمومی در فوتر اعمال خواهد شد */
+  color: #006A71;
 }
 
 .nav-item {
@@ -213,11 +211,11 @@ footer {
 @keyframes fadeInSlideUp {
   from {
     opacity: 0;
-    transform: translateY(20px); /* شروع از کمی پایین‌تر */
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0); /* پایان در موقعیت اصلی */
+    transform: translateY(0);
   }
 }
 
@@ -281,19 +279,44 @@ footer {
 /* Media Query for smaller screens */
 @media (max-width: 600px) {
   .user-message, .bot-message {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .input-wrapper {
+    padding: 0 10px 10px 10px;
+  }
+  
+  /* **این بخش را تغییر دهید تا فاصله بین دکمه‌ها در موبایل را تنظیم کنید** */
+  .bottom-footer nav {
+    gap: 10px; /* کاهش gap از 20px به 10px */
+    /* یا می توانید از justify-content: space-evenly; استفاده کنید تا فاصله یکنواخت تر شود */
+    /* justify-content: space-evenly; */
+  }
+
+  #messages-display {
+    padding-bottom: 120px;
+  }
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 600px) {
+  .user-message, .bot-message {
     margin-left: 10px;
     margin-right: 10px;
   }
   .input-wrapper {
     padding: 0 10px 10px 10px;
   }
-  /* No changes to .bottom-footer nav in media query to preserve exact copy */
-  .bottom-footer nav { /* از آخرین کپی شما */
-    gap: 20px; /* مقدار gap از فایل اصلی شما برای موبایل */
+  
+  /* **این بخش را تغییر دهید تا فاصله بین دکمه‌ها در موبایل را تنظیم کنید** */
+  .bottom-footer nav {
+    gap: 40px; /* مقدار gap را از 10px به 25px افزایش دادیم تا بازتر شوند */
+    /* اگر می خواهید خیلی بازتر شوند، می توانید این مقدار را بیشتر کنید.
+       همچنین می توانید justify-content: space-evenly; را نیز امتحان کنید
+       و gap را حذف کنید تا فاصله یکنواخت تر شود. */
   }
 
-  /* This padding-bottom needs to be adjusted based on the combined height of fixed input area and footer */
   #messages-display {
-    padding-bottom: 120px; /* نیاز به فضای بیشتری زیر پیام‌ها برای نمایش کامل */
+    padding-bottom: 120px;
   }
 }

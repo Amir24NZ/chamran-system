@@ -5,11 +5,13 @@ window.onload = function () {
   const loginPrompt = document.getElementById("login-prompt");
   const userInfoCheckout = document.getElementById("user-info-checkout");
   const placeOrderBtn = document.getElementById("place-order-btn");
+  const checkoutSection = document.getElementById("checkout-section"); // اضافه کردن این خط برای دسترسی به بخش تکمیل خرید
 
   if (cart.length === 0) {
     container.innerHTML = "<p style='text-align: center; margin-top: 20px;'>سبد خرید شما خالی است.</p>";
     loginPrompt.style.display = "none"; // Hide login prompt if cart is empty
     userInfoCheckout.style.display = "none"; // Hide user info if cart is empty
+    checkoutSection.style.display = "none"; // اضافه کردن این خط برای پنهان کردن بخش تکمیل خرید
     return;
   }
 
@@ -37,12 +39,10 @@ window.onload = function () {
 
     if (currentUserInfo) {
       document.getElementById("checkout-name").innerText = `نام: ${currentUserInfo.firstName} ${currentUserInfo.lastName}`;
-      // این خط تغییر کرده است
       document.getElementById("checkout-address").innerText = `آدرس: ${currentUserInfo.address}`;
       document.getElementById("checkout-phone").innerText = `شماره تلفن: ${currentUserInfo.phone}`;
     } else {
       document.getElementById("checkout-name").innerText = "اطلاعات حساب کاربری شما ناقص است. لطفاً به صفحه حساب کاربری مراجعه و اطلاعات خود را تکمیل کنید.";
-      // این خط تغییر کرده است
       document.getElementById("checkout-address").innerText = "";
       document.getElementById("checkout-phone").innerText = "";
       placeOrderBtn.disabled = true; // Disable order button if info is missing
@@ -74,7 +74,7 @@ function placeOrder() {
     return;
   }
 
-  if (!currentUserInfo || !currentUserInfo.firstName || !currentUserInfo.lastName || !currentUserInfo.address || !currentUserInfo.phone) { // اینجا city به address تغییر کرد
+  if (!currentUserInfo || !currentUserInfo.firstName || !currentUserInfo.lastName || !currentUserInfo.address || !currentUserInfo.phone) {
     alert("لطفاً اطلاعات حساب کاربری خود را در صفحه حساب کاربری تکمیل کنید.");
     return;
   }

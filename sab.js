@@ -37,11 +37,13 @@ window.onload = function () {
 
     if (currentUserInfo) {
       document.getElementById("checkout-name").innerText = `نام: ${currentUserInfo.firstName} ${currentUserInfo.lastName}`;
-      document.getElementById("checkout-city").innerText = `شهر: ${currentUserInfo.city}`;
+      // این خط تغییر کرده است
+      document.getElementById("checkout-address").innerText = `آدرس: ${currentUserInfo.address}`;
       document.getElementById("checkout-phone").innerText = `شماره تلفن: ${currentUserInfo.phone}`;
     } else {
       document.getElementById("checkout-name").innerText = "اطلاعات حساب کاربری شما ناقص است. لطفاً به صفحه حساب کاربری مراجعه و اطلاعات خود را تکمیل کنید.";
-      document.getElementById("checkout-city").innerText = "";
+      // این خط تغییر کرده است
+      document.getElementById("checkout-address").innerText = "";
       document.getElementById("checkout-phone").innerText = "";
       placeOrderBtn.disabled = true; // Disable order button if info is missing
     }
@@ -72,7 +74,7 @@ function placeOrder() {
     return;
   }
 
-  if (!currentUserInfo || !currentUserInfo.firstName || !currentUserInfo.lastName || !currentUserInfo.city || !currentUserInfo.phone) {
+  if (!currentUserInfo || !currentUserInfo.firstName || !currentUserInfo.lastName || !currentUserInfo.address || !currentUserInfo.phone) { // اینجا city به address تغییر کرد
     alert("لطفاً اطلاعات حساب کاربری خود را در صفحه حساب کاربری تکمیل کنید.");
     return;
   }

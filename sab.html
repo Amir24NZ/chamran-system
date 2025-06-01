@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="icon" href="img/logo.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>سبد خرید</title>
-  <link rel="stylesheet" href="sab.css?v=3.0">
+  <link rel="stylesheet" href="sab.css?v=3.1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="img/logo.png" type="image/x-icon">
 </head>
 
 <body>
-  <header>
+<header>
     <h1>سبد خرید <i class="fas fa-shopping-cart"></i></h1>
-  </header>
-  <div id="cartItems"></div>
+</header>
 
-  <div id="checkout-section">
-    <p id="login-prompt" style="text-align: center; margin-top: 20px; display: none;">برای ادامه خرید، لطفاً ابتدا <a href="ac.html">وارد حساب کاربری</a> خود شوید.</p>
+<main>
+  <section id="cartItems">
+    </section>
+
+  <section id="checkout-section">
+    <h2>تکمیل خرید</h2>
+    <div id="login-prompt" style="text-align: center;">
+      <p>برای تکمیل خرید، <a href="ac.html">وارد شوید</a> یا <a href="ac.html">ثبت‌نام کنید</a>.</p>
+    </div>
 
     <div id="user-info-checkout" style="display: none;">
-      <h2>اطلاعات شما:</h2>
+      <h2>اطلاعات گیرنده:</h2>
       <p id="checkout-name"></p>
-      <p id="checkout-city"></p>
+      <p id="checkout-address"></p>
       <p id="checkout-phone"></p>
       <button id="place-order-btn">ثبت سفارش نهایی</button>
     </div>
-  </div>
+  </section>
+</main>
 
-  <footer class="bottom-footer">
+<footer class="bottom-footer">
   <nav>
     <a href="index.html">
       <div class="nav-item">
@@ -62,6 +69,6 @@
   </nav>
 </footer>
 
-  <script src="sab.js?v=3.0"></script>
+<script defer src="sab.js?v=3.1"></script>
 </body>
 </html>

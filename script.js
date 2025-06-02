@@ -13,7 +13,17 @@ function searchProducts() {
 
   products.forEach(product => {
     const textContent = product.textContent.toLowerCase();
-    product.style.display = textContent.includes(input) ? "block" : "none";
+    // تغییر اینجا: به جای display: none/block از opacity و pointer-events استفاده می‌کنیم
+    if (textContent.includes(input)) {
+      product.style.opacity = "1";
+      product.style.pointerEvents = "auto";
+      product.style.position = "static"; // مطمئن می‌شویم که عنصر در جریان عادی صفحه باشد
+    } else {
+      product.style.opacity = "0";
+      product.style.pointerEvents = "none";
+      product.style.position = "absolute"; // خارج کردن از جریان عادی صفحه
+      product.style.width = "200px"; // برای حفظ عرض اولیه محصول
+    }
   });
 }
 
@@ -40,12 +50,15 @@ function filterProducts(category) {
 
   // فیلتر محصولات
   products.forEach(product => {
-    if (category === 'all') {
-      product.style.display = 'block';
-    } else if (product.classList.contains(`category-${category}`)) {
-      product.style.display = 'block';
+    if (category === 'all' || product.classList.contains(`category-${category}`)) {
+      product.style.opacity = '1';
+      product.style.pointerEvents = 'auto';
+      product.style.position = 'static'; // برگرداندن به حالت عادی
     } else {
-      product.style.display = 'none';
+      product.style.opacity = '0';
+      product.style.pointerEvents = 'none';
+      product.style.position = 'absolute'; // خارج کردن از جریان عادی
+      product.style.width = "200px"; // حفظ عرض برای جلوگیری از بهم ریختگی
     }
   });
 
@@ -136,4 +149,3 @@ setInterval(nextSlide, 7000);
 
 // نمایش اولین اسلاید
 showSlide(currentSlide);
-

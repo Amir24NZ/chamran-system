@@ -1,3 +1,8 @@
+// تابع کمکی برای فرمت کردن اعداد با کاما
+function formatNumberWithCommas(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 window.onload = function () {
   const container = document.getElementById("cartItems");
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -5,29 +10,43 @@ window.onload = function () {
   const loginPrompt = document.getElementById("login-prompt");
   const userInfoCheckout = document.getElementById("user-info-checkout");
   const placeOrderBtn = document.getElementById("place-order-btn");
-  const checkoutSection = document.getElementById("checkout-section"); // اضافه کردن این خط برای دسترسی به بخش تکمیل خرید
+  const checkoutSection = document.getElementById("checkout-section");
+  let totalCartPrice = 0; // متغیر جدید برای نگهداری جمع کل سبد خرید
 
   if (cart.length === 0) {
     container.innerHTML = "<p style='text-align: center; margin-top: 20px;'>سبد خرید شما خالی است.</p>";
-    loginPrompt.style.display = "none"; // Hide login prompt if cart is empty
-    userInfoCheckout.style.display = "none"; // Hide user info if cart is empty
-    checkoutSection.style.display = "none"; // اضافه کردن این خط برای پنهان کردن بخش تکمیل خرید
+    loginPrompt.style.display = "none";
+    userInfoCheckout.style.display = "none";
+    checkoutSection.style.display = "none";
     return;
   }
 
   cart.forEach((item, index) => {
     const div = document.createElement("div");
     div.className = "cart-item";
+    const itemPrice = parseFloat(item.price); // اطمینان از اینکه قیمت عدد است
+    totalCartPrice += itemPrice; // اضافه کردن قیمت هر کالا به جمع کل
+
     div.innerHTML = `
       <img src="${item.image}" alt="${item.title}">
       <div class="cart-item-details">
         <strong>${item.title}</strong>
-        <span>قیمت: ${item.price} تومان</span>
+        <span>قیمت: ${formatNumberWithCommas(itemPrice)} تومان</span>
         <button class="remove-btn" onclick="removeFromCart(${index})">❌ حذف</button>
       </div>
     `;
     container.appendChild(div);
   });
+
+  // نمایش جمع فاکتور در بخش تکمیل خرید
+  const totalPriceParagraph = document.createElement("p");
+  totalPriceParagraph.id = "total-cart-price";
+  totalPriceParagraph.innerHTML = `<strong>جمع فاکتور: ${formatNumberWithCommas(totalCartPrice)} تومان</strong>`;
+  // اضافه کردن پاراگراف قیمت به بخش تکمیل خرید
+  // این کد را قبل از هر چیزی در userInfoCheckout یا قبل از دکمه place-order-btn اضافه کنید.
+  // بهتر است این پاراگراف بلافاصله قبل از دکمه "ثبت سفارش نهایی" باشد.
+  userInfoCheckout.insertBefore(totalPriceParagraph, placeOrderBtn);
+
 
   // Check if user is logged in
   if (loggedInUser) {

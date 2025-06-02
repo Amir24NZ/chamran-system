@@ -136,6 +136,10 @@ function editInfo() {
   document.getElementById("ordersDisplay").classList.add("hidden");
 }
 
+function formatNumberWithCommas(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function displayUserOrders() {
     const loggedInUser = localStorage.getItem("loggedInUser");
     const orderListDiv = document.getElementById("orderList");
@@ -151,6 +155,13 @@ function displayUserOrders() {
         }
 
         orders.forEach(order => {
+            let totalOrderPrice = 0; // Initialize total price for each order
+            const orderItemsHtml = order.items.map(item => {
+                const itemPrice = parseFloat(item.price); // Assuming item.price is a string, convert to number
+                totalOrderPrice += itemPrice;
+                return `<li>${item.title} - ${formatNumberWithCommas(itemPrice)} تومان</li>`; // Format individual item price
+            }).join("");
+
             const orderDiv = document.createElement("div");
             orderDiv.className = "order-item";
             orderDiv.innerHTML = `
@@ -161,9 +172,10 @@ function displayUserOrders() {
                 <p>تلفن: ${order.userInfo.phone}</p>
                 <h4>محصولات:</h4>
                 <ul>
-                    ${order.items.map(item => `<li>${item.title} - ${item.price} تومان</li>`).join("")}
+                    ${orderItemsHtml}
                 </ul>
                 <hr>
+                <p><strong>جمع فاکتور: ${formatNumberWithCommas(totalOrderPrice)} تومان</strong></p>
             `;
             orderListDiv.appendChild(orderDiv);
         });

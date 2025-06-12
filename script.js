@@ -149,3 +149,21 @@ setInterval(nextSlide, 7000);
 
 // نمایش اولین اسلاید
 showSlide(currentSlide);
+
+// تابع برای اسکرول به بالا
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// نمایش یا مخفی کردن دکمه اسکرول به بالا بر اساس موقعیت صفحه
+window.onscroll = function() {
+    const scrollBtn = document.getElementById("scrollToTopBtn");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollBtn.style.display = "block";
+    } else {
+        scrollBtn.style.display = "none";
+    }
+};
